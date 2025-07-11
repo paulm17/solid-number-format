@@ -1707,6 +1707,63 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@empoleon/solid-number-format@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@empoleon/solid-number-format@workspace:."
+  dependencies:
+    "@babel/cli": "npm:^7.6.2"
+    "@babel/core": "npm:^7.6.2"
+    "@babel/plugin-proposal-class-properties": "npm:^7.5.5"
+    "@babel/plugin-proposal-object-rest-spread": "npm:^7.6.2"
+    "@babel/plugin-transform-flow-strip-types": "npm:^7.4.4"
+    "@babel/preset-env": "npm:^7.6.2"
+    "@babel/register": "npm:^7.6.2"
+    "@changesets/changelog-github": "npm:0.4.8"
+    "@changesets/cli": "npm:^2.29.5"
+    "@changesets/get-release-plan": "npm:3.0.17"
+    "@changesets/types": "npm:5.2.1"
+    "@rollup/plugin-babel": "npm:^6.0.4"
+    "@rollup/plugin-buble": "npm:^0.21.3"
+    "@rollup/plugin-typescript": "npm:^8.3.0"
+    "@solid-primitives/refs": "npm:^1.1.1"
+    "@testing-library/jest-dom": "npm:^6.4.5"
+    "@testing-library/user-event": "npm:^14.5.2"
+    "@typescript-eslint/parser": "npm:^5.15.0"
+    babel-eslint: "npm:^10.0.3"
+    babel-loader: "npm:^8.0.6"
+    babel-plugin-add-module-exports: "npm:^1.0.2"
+    babel-plugin-transform-object-assign: "npm:^6.22.0"
+    babel-preset-solid: "npm:^1.9.5"
+    classnames: "npm:^2.2.6"
+    clsx: "npm:^1.1.1"
+    cross-env: "npm:^6.0.3"
+    eslint: "npm:^6.5.1"
+    eslint-config-prettier: "npm:^8.3.0"
+    eslint-loader: "npm:^3.0.2"
+    eslint-plugin-import: "npm:^2.18.2"
+    gh-pages: "npm:^4.0.0"
+    jsdom: "npm:^24.0.0"
+    material-ui: "npm:^0.20.2"
+    pascal-case: "npm:3.1.2"
+    prettier: "npm:^2.2.1"
+    rollup: "npm:^1.22.0"
+    rollup-plugin-babel: "npm:^4.3.3"
+    rollup-plugin-commonjs: "npm:^10.1.0"
+    rollup-plugin-filesize: "npm:^6.2.0"
+    rollup-plugin-license: "npm:^0.12.1"
+    rollup-plugin-node-resolve: "npm:^5.2.0"
+    rollup-plugin-replace: "npm:^2.2.0"
+    rollup-plugin-uglify: "npm:^6.0.3"
+    solid-js: "npm:^1.9.7"
+    ts-loader: "npm:^9.2.6"
+    typescript: "npm:^4.6.3"
+    vitest: "npm:^1.6.0"
+    webpack: "npm:^5.69.1"
+    webpack-cli: "npm:^4.9.2"
+    webpack-dev-server: "npm:^4.7.4"
+  languageName: unknown
+  linkType: soft
+
 "@esbuild/aix-ppc64@npm:0.21.5":
   version: 0.21.5
   resolution: "@esbuild/aix-ppc64@npm:0.21.5"
@@ -9282,63 +9339,6 @@ __metadata:
   checksum: 10c0/60f90a38d1c49d1e4d48717e2a4c3d27d93a69f5429eca958ad4f89864a967b054e80f888cf7d89f57a19d4a15368dc3311d5941d887e0ff5dce8b383b563cea
   languageName: node
   linkType: hard
-
-"solid-number-format@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "solid-number-format@workspace:."
-  dependencies:
-    "@babel/cli": "npm:^7.6.2"
-    "@babel/core": "npm:^7.6.2"
-    "@babel/plugin-proposal-class-properties": "npm:^7.5.5"
-    "@babel/plugin-proposal-object-rest-spread": "npm:^7.6.2"
-    "@babel/plugin-transform-flow-strip-types": "npm:^7.4.4"
-    "@babel/preset-env": "npm:^7.6.2"
-    "@babel/register": "npm:^7.6.2"
-    "@changesets/changelog-github": "npm:0.4.8"
-    "@changesets/cli": "npm:^2.29.5"
-    "@changesets/get-release-plan": "npm:3.0.17"
-    "@changesets/types": "npm:5.2.1"
-    "@rollup/plugin-babel": "npm:^6.0.4"
-    "@rollup/plugin-buble": "npm:^0.21.3"
-    "@rollup/plugin-typescript": "npm:^8.3.0"
-    "@solid-primitives/refs": "npm:^1.1.1"
-    "@testing-library/jest-dom": "npm:^6.4.5"
-    "@testing-library/user-event": "npm:^14.5.2"
-    "@typescript-eslint/parser": "npm:^5.15.0"
-    babel-eslint: "npm:^10.0.3"
-    babel-loader: "npm:^8.0.6"
-    babel-plugin-add-module-exports: "npm:^1.0.2"
-    babel-plugin-transform-object-assign: "npm:^6.22.0"
-    babel-preset-solid: "npm:^1.9.5"
-    classnames: "npm:^2.2.6"
-    clsx: "npm:^1.1.1"
-    cross-env: "npm:^6.0.3"
-    eslint: "npm:^6.5.1"
-    eslint-config-prettier: "npm:^8.3.0"
-    eslint-loader: "npm:^3.0.2"
-    eslint-plugin-import: "npm:^2.18.2"
-    gh-pages: "npm:^4.0.0"
-    jsdom: "npm:^24.0.0"
-    material-ui: "npm:^0.20.2"
-    pascal-case: "npm:3.1.2"
-    prettier: "npm:^2.2.1"
-    rollup: "npm:^1.22.0"
-    rollup-plugin-babel: "npm:^4.3.3"
-    rollup-plugin-commonjs: "npm:^10.1.0"
-    rollup-plugin-filesize: "npm:^6.2.0"
-    rollup-plugin-license: "npm:^0.12.1"
-    rollup-plugin-node-resolve: "npm:^5.2.0"
-    rollup-plugin-replace: "npm:^2.2.0"
-    rollup-plugin-uglify: "npm:^6.0.3"
-    solid-js: "npm:^1.9.7"
-    ts-loader: "npm:^9.2.6"
-    typescript: "npm:^4.6.3"
-    vitest: "npm:^1.6.0"
-    webpack: "npm:^5.69.1"
-    webpack-cli: "npm:^4.9.2"
-    webpack-dev-server: "npm:^4.7.4"
-  languageName: unknown
-  linkType: soft
 
 "source-map-js@npm:^1.2.1":
   version: 1.2.1
