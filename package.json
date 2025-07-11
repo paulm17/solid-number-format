@@ -1,5 +1,5 @@
 {
-  "name": "solid-number-format",
+  "name": "@empoleon/solid-number-format",
   "description": "Solidjs component to format number in an input or as a text.",
   "version": "5.4.4",
   "type": "module",
