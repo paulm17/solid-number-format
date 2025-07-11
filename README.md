@@ -36,3 +36,7 @@ Test cases are written in jasmine and run by karma
 Test files : /test/\*\*/\*.spec.js
 
 To run test : `yarn test`
+
+## License
+
+MIT

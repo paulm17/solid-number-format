@@ -30,7 +30,7 @@ export function memoizeOnce<T extends unknown[], R extends unknown>(cb: (...args
 }
 
 export function charIsNumber(char?: string) {
-  return !!(String(char || '')).match(/\d/);
+  return !!String(char || '').match(/\d/);
 }
 
 export function isNil(val: any): val is null | undefined {

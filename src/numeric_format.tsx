@@ -57,7 +57,8 @@ export function format<BaseType = InputAttributes>(
    * Or if decimalScale is > 0 and fixeDecimalScale is true (even if numStr has no decimal)
    */
   const hasDecimalSeparator =
-    (local.decimalScale !== 0 && numStr.indexOf('.') !== -1) || (local.decimalScale && local.fixedDecimalScale);
+    (local.decimalScale !== 0 && numStr.indexOf('.') !== -1) ||
+    (local.decimalScale && local.fixedDecimalScale);
 
   let { beforeDecimal, afterDecimal, addNegation } = splitDecimal(numStr, local.allowNegative); // eslint-disable-line prefer-const
 
@@ -67,7 +68,11 @@ export function format<BaseType = InputAttributes>(
   }
 
   if (thousandSeparator) {
-    beforeDecimal = applyThousandSeparator(beforeDecimal, thousandSeparator, local.thousandsGroupStyle ?? 'thousand');
+    beforeDecimal = applyThousandSeparator(
+      beforeDecimal,
+      thousandSeparator,
+      local.thousandsGroupStyle ?? 'thousand',
+    );
   }
 
   //add prefix and suffix when there is a number present
@@ -142,15 +147,10 @@ export function removeFormatting<BaseType = InputAttributes>(
   changeMeta: ChangeMeta = getDefaultChangeMeta(value),
   props: NumericFormatProps<BaseType>,
 ) {
-  const [local, _] = splitProps(props, [
-    'allowNegative',
-    'prefix',
-    'suffix',
-    'decimalScale',
-  ]);
+  const [local, _] = splitProps(props, ['allowNegative', 'prefix', 'suffix', 'decimalScale']);
 
-  const prefix = local.prefix?? '';
-  const suffix = local.suffix?? '';
+  const prefix = local.prefix ?? '';
+  const suffix = local.suffix ?? '';
 
   const { allowedDecimalSeparators, decimalSeparator } = getSeparators(props);
 
@@ -169,9 +169,15 @@ export function removeFormatting<BaseType = InputAttributes>(
   }
 
   /** Check for any allowed decimal separator is added in the numeric format and replace it with decimal separator */
-  if (changeMeta.to.end - changeMeta.to.start === 1 && allowedDecimalSeparators.indexOf(value[changeMeta.to.start]) !== -1) {
+  if (
+    changeMeta.to.end - changeMeta.to.start === 1 &&
+    allowedDecimalSeparators.indexOf(value[changeMeta.to.start]) !== -1
+  ) {
     const separator = local.decimalScale === 0 ? '' : decimalSeparator;
-    value = value.substring(0, changeMeta.to.start) + separator + value.substring(changeMeta.to.start + 1, value.length);
+    value =
+      value.substring(0, changeMeta.to.start) +
+      separator +
+      value.substring(changeMeta.to.start + 1, value.length);
   }
 
   const stripNegation = (value: string, start: number, end: number) => {
@@ -295,13 +301,10 @@ export function getCaretBoundary<BaseType = InputAttributes>(
   formattedValue: string,
   props: NumericFormatProps<BaseType>,
 ) {
-  const [local, _] = splitProps(props, [
-    'prefix',
-    'suffix',
-  ]);
+  const [local, _] = splitProps(props, ['prefix', 'suffix']);
 
-  const prefix = local.prefix?? '';
-  const suffix = local.suffix?? '';
+  const prefix = local.prefix ?? '';
+  const suffix = local.suffix ?? '';
 
   const boundaryAry = Array.from({ length: formattedValue.length + 1 }).map(() => true);
 
@@ -319,13 +322,10 @@ export function getCaretBoundary<BaseType = InputAttributes>(
 
 function validateAndUpdateProps<BaseType = InputAttributes>(props: NumericFormatProps<BaseType>) {
   const { thousandSeparator, decimalSeparator } = getSeparators(props);
-  const [local, _] = splitProps(props, [
-    'prefix',
-    'allowNegative',
-  ]);
+  const [local, _] = splitProps(props, ['prefix', 'allowNegative']);
 
   let allowNegative = local.allowNegative ?? true;
-  const prefix = local.prefix?? '';
+  const prefix = local.prefix ?? '';
 
   if (thousandSeparator === decimalSeparator) {
     throw new Error(`
@@ -377,7 +377,7 @@ export function useNumericFormat<BaseType = InputAttributes>(
     'onValueChange',
   ]);
 
-  const prefix = local.prefix?? '';
+  const prefix = local.prefix ?? '';
   // const onKeyDown = local.onKeyDown?? noop;
   // const onBlur = local.onBlur?? noop;
 
@@ -399,7 +399,8 @@ export function useNumericFormat<BaseType = InputAttributes>(
   const _value = isNil(getValue()) ? local.defaultValue : getValue();
 
   // try to figure out isValueNumericString based on format prop and value
-  let _valueIsNumericString = local.valueIsNumericString ?? isNumericString(_value, prefix, local.suffix);
+  let _valueIsNumericString =
+    local.valueIsNumericString ?? isNumericString(_value, prefix, local.suffix);
 
   if (!isNil(getValue())) {
     _valueIsNumericString = _valueIsNumericString || typeof getValue() === 'number';

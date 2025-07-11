@@ -66,7 +66,7 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
   const onFocus = local.onFocus ?? noop;
   const onBlur = local.onBlur ?? noop;
   const getCaretBoundary = local.getCaretBoundary ?? caretUnknownFormatBoundary;
-  const isValidInputCharacter = local.isValidInputCharacter?? charIsNumber;
+  const isValidInputCharacter = local.isValidInputCharacter ?? charIsNumber;
 
   // const [{ formattedValue, numAsString }, onFormattedValueChange] = useInternalValues(
   //   () => local.value,
@@ -201,7 +201,10 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
 
     if (newFormattedValue !== formattedValue()) {
       // trigger onValueChange synchronously, so parent is updated along with the number format. Fix for #277, #287
-      _onValueChange(getValueObject(newFormattedValue, params.numAsString), { event: params.event, source: params.source });
+      _onValueChange(getValueObject(newFormattedValue, params.numAsString), {
+        event: params.event,
+        source: params.source,
+      });
     }
   };
 
@@ -223,9 +226,7 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
 
   // also if formatted value is changed from the props, we need to update the caret position
   // keep the last caret position if element is focused
-  const currentCaretPosition = focusedElm
-    ? geInputCaretPosition(focusedElm)
-    : undefined;
+  const currentCaretPosition = focusedElm ? geInputCaretPosition(focusedElm) : undefined;
 
   // needed to prevent warning with useLayoutEffect on server
 
@@ -291,7 +292,10 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
   };
 
   const setCaretPositionInfoBeforeChange = (el: HTMLInputElement, endOffset: number = 0) => {
-    caretPositionBeforeChange = { selectionStart: el.selectionStart, selectionEnd: el.selectionEnd + endOffset };
+    caretPositionBeforeChange = {
+      selectionStart: el.selectionStart,
+      selectionEnd: el.selectionEnd + endOffset,
+    };
   };
 
   const _onChange = (e: InputEvent) => {
@@ -300,7 +304,11 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
 
     const changed = formatInputValue(inputValue, e, SourceType.event);
 
-    if (changed) typeof onChange === "function" && onChange(e as unknown as Event & { currentTarget: HTMLInputElement; target: HTMLInputElement });
+    if (changed)
+      typeof onChange === 'function' &&
+        onChange(
+          e as unknown as Event & { currentTarget: HTMLInputElement; target: HTMLInputElement },
+        );
 
     // reset the position, as we have already handled the caret position
     caretPositionBeforeChange = undefined;
@@ -334,7 +342,10 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
     //if expectedCaretPosition is not set it means we don't want to Handle keyDown
     // also if multiple characters are selected don't handle
     if (expectedCaretPosition === undefined || (selectionStart !== selectionEnd && !isArrowKey)) {
-      typeof onKeyDown === "function" && onKeyDown(e as unknown as KeyboardEvent & { currentTarget: HTMLInputElement; target: Element });
+      typeof onKeyDown === 'function' &&
+        onKeyDown(
+          e as unknown as KeyboardEvent & { currentTarget: HTMLInputElement; target: Element },
+        );
       // keep information of what was the caret position before keyDown
       // set it after onKeyDown, in case parent updates the position manually
       setCaretPositionInfoBeforeChange(el, endOffset);
@@ -362,7 +373,10 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
       setPatchedCaretPosition(el, newCaretPosition, value);
     }
 
-    typeof onKeyDown === "function" && onKeyDown(e as unknown as KeyboardEvent & { currentTarget: HTMLInputElement; target: Element });
+    typeof onKeyDown === 'function' &&
+      onKeyDown(
+        e as unknown as KeyboardEvent & { currentTarget: HTMLInputElement; target: Element },
+      );
 
     setCaretPositionInfoBeforeChange(el, endOffset);
   };
@@ -394,7 +408,8 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
       correctCaretPositionIfRequired();
     });
 
-    typeof onMouseUp === "function" && onMouseUp(e as unknown as MouseEvent & { currentTarget: HTMLInputElement; target: Element });
+    typeof onMouseUp === 'function' &&
+      onMouseUp(e as unknown as MouseEvent & { currentTarget: HTMLInputElement; target: Element });
     setCaretPositionInfoBeforeChange(el);
   };
 
@@ -416,11 +431,12 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
         setPatchedCaretPosition(el, caretPosition, value);
       }
 
-      typeof onFocus === "function" && onFocus({
-        ...e,
-        currentTarget,
-        target: el
-      });
+      typeof onFocus === 'function' &&
+        onFocus({
+          ...e,
+          currentTarget,
+          target: el,
+        });
     }, 0);
   };
 
@@ -430,15 +446,17 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
     focusedElm = null;
     clearTimeout(timeout.focusTimeout as unknown as Timeout);
     clearTimeout(timeout.setCaretTimeout as unknown as Timeout);
-    typeof onBlur === "function" && onBlur({
-      ...e,
-      currentTarget,
-      target: el
-    });
+    typeof onBlur === 'function' &&
+      onBlur({
+        ...e,
+        currentTarget,
+        target: el,
+      });
   };
 
   // add input mode on element based on format prop and device once the component is mounted
-  const inputMode: InputAttributes['inputMode'] = mounted() && addInputMode() ? 'numeric' : undefined;
+  const inputMode: InputAttributes['inputMode'] =
+    mounted() && addInputMode() ? 'numeric' : undefined;
 
   // const inputProps = Object.assign({ inputMode }, otherProps, {
   //   type,

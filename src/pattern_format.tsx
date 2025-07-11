@@ -64,7 +64,8 @@ export function removeFormatting<BaseType = InputAttributes>(
    * and remove the format characters, if there is a mismatch on the pattern, do plane number extract
    */
   if (
-    (changeMeta.lastValue === '' || changeMeta.from.end - changeMeta.from.start === changeMeta.lastValue.length) &&
+    (changeMeta.lastValue === '' ||
+      changeMeta.from.end - changeMeta.from.start === changeMeta.lastValue.length) &&
     value.length === format.length
   ) {
     let str = '';
@@ -201,7 +202,7 @@ export function usePatternFormat<BaseType = InputAttributes>(
 
     // if multiple characters are selected and user hits backspace, no need to handle anything manually
     if (selectionStart !== selectionEnd) {
-      typeof local.onKeyDown === "function" && local.onKeyDown(e);
+      typeof local.onKeyDown === 'function' && local.onKeyDown(e);
       return;
     }
 
@@ -240,7 +241,7 @@ export function usePatternFormat<BaseType = InputAttributes>(
       setCaretPosition(el, caretPos);
     }
 
-    typeof local.onKeyDown === "function" && local.onKeyDown(e);
+    typeof local.onKeyDown === 'function' && local.onKeyDown(e);
   };
 
   // try to figure out isValueNumericString based on format prop and value
